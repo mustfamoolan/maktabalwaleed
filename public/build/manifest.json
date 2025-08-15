@@ -1,27 +1,27 @@
 {
-  "_GuestLayout-D26Ksg8q.js": {
-    "file": "assets/GuestLayout-D26Ksg8q.js",
+  "_GuestLayout-B4CjxVzB.js": {
+    "file": "assets/GuestLayout-B4CjxVzB.js",
     "name": "GuestLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_HeadquartersLayout-2CkVJdbo.js": {
-    "file": "assets/HeadquartersLayout-2CkVJdbo.js",
+  "_HeadquartersLayout-47UsUVQt.js": {
+    "file": "assets/HeadquartersLayout-47UsUVQt.js",
     "name": "HeadquartersLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-1MfScx3F.js": {
-    "file": "assets/index-1MfScx3F.js",
+  "_index-Ct2ldFtK.js": {
+    "file": "assets/index-Ct2ldFtK.js",
     "name": "index",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/js/Pages/Customers/Index.jsx": {
-    "file": "assets/Index-DIB_tP2N.js",
+    "file": "assets/Index-FVmAF28j.js",
     "name": "Index",
     "src": "resources/js/Pages/Customers/Index.jsx",
     "isDynamicEntry": true,
@@ -30,132 +30,182 @@
     ]
   },
   "resources/js/Pages/Drivers/Login.jsx": {
-    "file": "assets/Login-MVu3zbDj.js",
+    "file": "assets/Login-zHC6UIgW.js",
     "name": "Login",
     "src": "resources/js/Pages/Drivers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-D26Ksg8q.js"
+      "_GuestLayout-B4CjxVzB.js"
     ]
   },
   "resources/js/Pages/Headquarters/Dashboard.jsx": {
-    "file": "assets/Dashboard-BtaGrTly.js",
+    "file": "assets/Dashboard-BX1zis1P.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Headquarters/Dashboard.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js"
+      "_HeadquartersLayout-47UsUVQt.js"
     ]
   },
   "resources/js/Pages/Headquarters/Login.jsx": {
-    "file": "assets/Login-CGqRNcWF.js",
+    "file": "assets/Login-DsCjPfF3.js",
     "name": "Login",
     "src": "resources/js/Pages/Headquarters/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-D26Ksg8q.js"
+      "_GuestLayout-B4CjxVzB.js"
     ]
   },
   "resources/js/Pages/Headquarters/POS.jsx": {
-    "file": "assets/POS-Dsa4cn_n.js",
+    "file": "assets/POS-BfUHNcwk.js",
     "name": "POS",
     "src": "resources/js/Pages/Headquarters/POS.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js"
+      "_HeadquartersLayout-47UsUVQt.js"
     ]
   },
   "resources/js/Pages/Headquarters/RepresentativeDetails.jsx": {
-    "file": "assets/RepresentativeDetails-BJoQoye3.js",
+    "file": "assets/RepresentativeDetails-D6ohNeDR.js",
     "name": "RepresentativeDetails",
     "src": "resources/js/Pages/Headquarters/RepresentativeDetails.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js",
-      "_index-1MfScx3F.js"
+      "_HeadquartersLayout-47UsUVQt.js",
+      "_index-Ct2ldFtK.js"
     ]
   },
   "resources/js/Pages/Headquarters/Representatives.jsx": {
-    "file": "assets/Representatives-B3vm20TZ.js",
+    "file": "assets/Representatives-4W-pTviv.js",
     "name": "Representatives",
     "src": "resources/js/Pages/Headquarters/Representatives.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js",
-      "_index-1MfScx3F.js"
+      "_HeadquartersLayout-47UsUVQt.js",
+      "_index-Ct2ldFtK.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/RepresentativesSimple.jsx": {
+    "file": "assets/RepresentativesSimple-CiVebl8n.js",
+    "name": "RepresentativesSimple",
+    "src": "resources/js/Pages/Headquarters/RepresentativesSimple.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-47UsUVQt.js"
     ]
   },
   "resources/js/Pages/Headquarters/SupplierDetails.jsx": {
-    "file": "assets/SupplierDetails-BZxZPSdO.js",
+    "file": "assets/SupplierDetails-BPIAJyD-.js",
     "name": "SupplierDetails",
     "src": "resources/js/Pages/Headquarters/SupplierDetails.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js",
-      "_index-1MfScx3F.js"
+      "_HeadquartersLayout-47UsUVQt.js",
+      "_index-Ct2ldFtK.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/SupplierForm.jsx": {
+    "file": "assets/SupplierForm-DcY26tOD.js",
+    "name": "SupplierForm",
+    "src": "resources/js/Pages/Headquarters/SupplierForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-47UsUVQt.js"
     ]
   },
   "resources/js/Pages/Headquarters/Suppliers.jsx": {
-    "file": "assets/Suppliers-B6Mftr4t.js",
+    "file": "assets/Suppliers-BBzE2TUf.js",
     "name": "Suppliers",
     "src": "resources/js/Pages/Headquarters/Suppliers.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js",
-      "_index-1MfScx3F.js"
+      "_HeadquartersLayout-47UsUVQt.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/SuppliersOld.jsx": {
+    "file": "assets/SuppliersOld-DSTOKOXq.js",
+    "name": "SuppliersOld",
+    "src": "resources/js/Pages/Headquarters/SuppliersOld.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-47UsUVQt.js",
+      "_index-Ct2ldFtK.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/SuppliersSimple.jsx": {
+    "file": "assets/SuppliersSimple-r3_L_xib.js",
+    "name": "SuppliersSimple",
+    "src": "resources/js/Pages/Headquarters/SuppliersSimple.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-47UsUVQt.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/SuppliersTest.jsx": {
+    "file": "assets/SuppliersTest-CiCNe2l3.js",
+    "name": "SuppliersTest",
+    "src": "resources/js/Pages/Headquarters/SuppliersTest.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-47UsUVQt.js"
     ]
   },
   "resources/js/Pages/Headquarters/Warehouse.jsx": {
-    "file": "assets/Warehouse-COl9vwVE.js",
+    "file": "assets/Warehouse-DZsUr7c-.js",
     "name": "Warehouse",
     "src": "resources/js/Pages/Headquarters/Warehouse.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-2CkVJdbo.js",
-      "_index-1MfScx3F.js"
+      "_HeadquartersLayout-47UsUVQt.js",
+      "_index-Ct2ldFtK.js"
     ]
   },
   "resources/js/Pages/Index.jsx": {
-    "file": "assets/Index-BpYiNDF7.js",
+    "file": "assets/Index-B7j_mZE8.js",
     "name": "Index",
     "src": "resources/js/Pages/Index.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-D26Ksg8q.js"
+      "_GuestLayout-B4CjxVzB.js"
     ]
   },
   "resources/js/Pages/Preparers/Login.jsx": {
-    "file": "assets/Login-4wCSPUsQ.js",
+    "file": "assets/Login-_ETUZPMt.js",
     "name": "Login",
     "src": "resources/js/Pages/Preparers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-D26Ksg8q.js"
+      "_GuestLayout-B4CjxVzB.js"
     ]
   },
   "resources/js/Pages/Representatives/Login.jsx": {
-    "file": "assets/Login-K-ojiMZU.js",
+    "file": "assets/Login-QFR0V9dK.js",
     "name": "Login",
     "src": "resources/js/Pages/Representatives/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-D26Ksg8q.js"
+      "_GuestLayout-B4CjxVzB.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-y4GiZYjz.js",
+    "file": "assets/app-DAYDMe4G.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -167,15 +217,20 @@
       "resources/js/Pages/Headquarters/POS.jsx",
       "resources/js/Pages/Headquarters/RepresentativeDetails.jsx",
       "resources/js/Pages/Headquarters/Representatives.jsx",
+      "resources/js/Pages/Headquarters/RepresentativesSimple.jsx",
       "resources/js/Pages/Headquarters/SupplierDetails.jsx",
+      "resources/js/Pages/Headquarters/SupplierForm.jsx",
       "resources/js/Pages/Headquarters/Suppliers.jsx",
+      "resources/js/Pages/Headquarters/SuppliersOld.jsx",
+      "resources/js/Pages/Headquarters/SuppliersSimple.jsx",
+      "resources/js/Pages/Headquarters/SuppliersTest.jsx",
       "resources/js/Pages/Headquarters/Warehouse.jsx",
       "resources/js/Pages/Index.jsx",
       "resources/js/Pages/Preparers/Login.jsx",
       "resources/js/Pages/Representatives/Login.jsx"
     ],
     "css": [
-      "assets/app-BEDDdLNe.css"
+      "assets/app-DnxsvwYc.css"
     ]
   }
 }

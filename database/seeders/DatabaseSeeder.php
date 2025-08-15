@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // إضافة seeders لقواعد البيانات
         $this->call([
             HeadquartersUserSeeder::class,
+
         ]);
 
         // User::factory(10)->create();

@@ -1,49 +1,8 @@
-import React, { useState } from 'react';
-import { Head, Link, router } from '@inertiajs/react';
+import React from 'react';
+import { Head } from '@inertiajs/react';
 import HeadquartersLayout from '@/Layouts/HeadquartersLayout';
 
 export default function Suppliers({ suppliers, categories, filters }) {
-    const [searchTerm, setSearchTerm] = useState(filters?.search || '');
-    const [selectedCategory, setSelectedCategory] = useState(filters?.category || '');
-    const [statusFilter, setStatusFilter] = useState(filters?.status || 'active');
-
-    const handleSearch = () => {
-        router.get('/headquarters/suppliers', {
-            search: searchTerm,
-            category: selectedCategory,
-            status: statusFilter,
-        }, {
-            preserveState: true,
-            replace: true,
-        });
-    };
-
-    const handleToggleStatus = (supplierId) => {
-        if (confirm('هل أنت متأكد من تغيير حالة المورد؟')) {
-            router.post(`/headquarters/suppliers/${supplierId}/toggle-status`);
-        }
-    };
-
-    const handleDelete = (supplierId) => {
-        if (confirm('هل أنت متأكد من حذف هذا المورد؟ هذا الإجراء لا يمكن التراجع عنه.')) {
-            router.delete(`/headquarters/suppliers/${supplierId}`);
-        }
-    };
-
-    const getStatusBadge = (status) => {
-        return status === 'active'
-            ? <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">نشط</span>
-            : <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">غير نشط</span>;
-    };
-
-    const getCategoryBadges = (productCategories) => {
-        return productCategories.map((category, index) => (
-            <span key={index} className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
-                {categories[category] || category}
-            </span>
-        ));
-    };
-
     return (
         <HeadquartersLayout>
             <Head title="إدارة الموردين" />
@@ -51,14 +10,14 @@ export default function Suppliers({ suppliers, categories, filters }) {
             <div className="min-h-screen bg-gray-50 py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                    {/* العنوان والإحصائيات */}
+                    {/* العنوان */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
                         <div className="flex items-center justify-between mb-4">
                             <div>
                                 <h1 className="text-2xl font-bold text-gray-900">إدارة الموردين</h1>
                                 <p className="text-gray-600 mt-1">إدارة بيانات الموردين والشركات المتعاملة</p>
                             </div>
-                            <Link
+                            <a
                                 href="/headquarters/suppliers/create"
                                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
                             >
@@ -66,7 +25,7 @@ export default function Suppliers({ suppliers, categories, filters }) {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                                 إضافة مورد جديد
-                            </Link>
+                            </a>
                         </div>
 
                         {/* إحصائيات سريعة */}
@@ -89,61 +48,9 @@ export default function Suppliers({ suppliers, categories, filters }) {
                             </div>
                             <div className="bg-purple-50 p-4 rounded-lg">
                                 <div className="text-2xl font-bold text-purple-600">
-                                    {suppliers?.data?.reduce((sum, s) => sum + (s.current_balance || 0), 0).toLocaleString() || 0}
+                                    {suppliers?.data?.reduce((sum, s) => sum + (parseFloat(s.current_balance) || 0), 0).toLocaleString() || 0}
                                 </div>
-                                <div className="text-sm text-purple-600">إجمالي الأرصدة</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* أدوات البحث والتصفية */}
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">البحث</label>
-                                <input
-                                    type="text"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder="ابحث عن مورد..."
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">الفئة</label>
-                                <select
-                                    value={selectedCategory}
-                                    onChange={(e) => setSelectedCategory(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                >
-                                    <option value="">جميع الفئات</option>
-                                    {Object.entries(categories || {}).map(([key, name]) => (
-                                        <option key={key} value={key}>{name}</option>
-                                    ))}
-                                </select>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">الحالة</label>
-                                <select
-                                    value={statusFilter}
-                                    onChange={(e) => setStatusFilter(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                >
-                                    <option value="all">جميع الحالات</option>
-                                    <option value="active">نشط</option>
-                                    <option value="inactive">غير نشط</option>
-                                </select>
-                            </div>
-
-                            <div className="flex items-end">
-                                <button
-                                    onClick={handleSearch}
-                                    className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                                >
-                                    بحث
-                                </button>
+                                <div className="text-sm text-purple-600">إجمالي الأرصدة (دينار)</div>
                             </div>
                         </div>
                     </div>
@@ -160,9 +67,6 @@ export default function Suppliers({ suppliers, categories, filters }) {
                                             <tr>
                                                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
                                                     اسم المورد
-                                                </th>
-                                                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                                                    جهة الاتصال
                                                 </th>
                                                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
                                                     فئات المنتجات
@@ -186,58 +90,46 @@ export default function Suppliers({ suppliers, categories, filters }) {
                                                             <div className="text-sm font-medium text-gray-900">
                                                                 {supplier.name}
                                                             </div>
-                                                            <div className="text-sm text-gray-500">
-                                                                {supplier.city}
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap">
-                                                        <div>
-                                                            <div className="text-sm text-gray-900">
-                                                                {supplier.contact_person || 'غير محدد'}
-                                                            </div>
-                                                            <div className="text-sm text-gray-500">
-                                                                {supplier.phone || 'غير محدد'}
-                                                            </div>
+                                                            {supplier.description && (
+                                                                <div className="text-sm text-gray-500 truncate max-w-xs">
+                                                                    {supplier.description}
+                                                                </div>
+                                                            )}
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         <div className="flex flex-wrap gap-1">
-                                                            {getCategoryBadges(supplier.product_categories)}
+                                                            {supplier.product_categories?.map((category, index) => (
+                                                                <span key={index} className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
+                                                                    {categories?.[category] || category}
+                                                                </span>
+                                                            ))}
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                         {supplier.current_balance?.toLocaleString() || 0} دينار
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        {getStatusBadge(supplier.status)}
+                                                        {supplier.status === 'active' ? (
+                                                            <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">نشط</span>
+                                                        ) : (
+                                                            <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">غير نشط</span>
+                                                        )}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                         <div className="flex space-x-2 space-x-reverse">
-                                                            <Link
+                                                            <a
                                                                 href={`/headquarters/suppliers/${supplier.id}`}
                                                                 className="text-blue-600 hover:text-blue-900"
                                                             >
                                                                 عرض
-                                                            </Link>
-                                                            <Link
+                                                            </a>
+                                                            <a
                                                                 href={`/headquarters/suppliers/${supplier.id}/edit`}
                                                                 className="text-green-600 hover:text-green-900"
                                                             >
                                                                 تعديل
-                                                            </Link>
-                                                            <button
-                                                                onClick={() => handleToggleStatus(supplier.id)}
-                                                                className="text-yellow-600 hover:text-yellow-900"
-                                                            >
-                                                                {supplier.status === 'active' ? 'إلغاء تفعيل' : 'تفعيل'}
-                                                            </button>
-                                                            <button
-                                                                onClick={() => handleDelete(supplier.id)}
-                                                                className="text-red-600 hover:text-red-900"
-                                                            >
-                                                                حذف
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -253,7 +145,7 @@ export default function Suppliers({ suppliers, categories, filters }) {
                                     <h3 className="mt-2 text-sm font-medium text-gray-900">لا توجد موردين</h3>
                                     <p className="mt-1 text-sm text-gray-500">ابدأ بإضافة مورد جديد</p>
                                     <div className="mt-6">
-                                        <Link
+                                        <a
                                             href="/headquarters/suppliers/create"
                                             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                                         >
@@ -261,28 +153,8 @@ export default function Suppliers({ suppliers, categories, filters }) {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                             </svg>
                                             إضافة مورد جديد
-                                        </Link>
+                                        </a>
                                     </div>
-                                </div>
-                            )}
-
-                            {/* Pagination */}
-                            {suppliers?.links && (
-                                <div className="mt-6 flex justify-center">
-                                    <nav className="flex space-x-1 space-x-reverse">
-                                        {suppliers.links.map((link, index) => (
-                                            <Link
-                                                key={index}
-                                                href={link.url}
-                                                className={`px-3 py-2 text-sm rounded-md ${
-                                                    link.active
-                                                        ? 'bg-blue-600 text-white'
-                                                        : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
-                                                }`}
-                                                dangerouslySetInnerHTML={{ __html: link.label }}
-                                            />
-                                        ))}
-                                    </nav>
                                 </div>
                             )}
                         </div>

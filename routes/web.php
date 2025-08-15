@@ -49,11 +49,29 @@ Route::prefix('headquarters')->group(function () {
 
         // الموردين
         Route::get('/suppliers', [SuppliersController::class, 'index'])->name('headquarters.suppliers');
-        Route::get('/suppliers/{id}', [SuppliersController::class, 'show'])->name('headquarters.supplier.details');
+        Route::get('/suppliers/create', [SuppliersController::class, 'create'])->name('suppliers.create');
+        Route::post('/suppliers', [SuppliersController::class, 'store'])->name('suppliers.store');
+        Route::get('/suppliers/{id}', [SuppliersController::class, 'show'])->name('suppliers.show');
+        Route::get('/suppliers/{id}/edit', [SuppliersController::class, 'edit'])->name('suppliers.edit');
+        Route::put('/suppliers/{id}', [SuppliersController::class, 'update'])->name('suppliers.update');
+        Route::delete('/suppliers/{id}', [SuppliersController::class, 'destroy'])->name('suppliers.destroy');
+        Route::post('/suppliers/{id}/toggle-status', [SuppliersController::class, 'toggleStatus'])->name('suppliers.toggle-status');
 
         // المندوبين
         Route::get('/representatives', [RepresentativesController::class, 'index'])->name('headquarters.representatives');
         Route::get('/representatives/{id}', [RepresentativesController::class, 'show'])->name('headquarters.representative.details');
+
+        // API routes for representatives management
+        Route::post('/api/representatives', [RepresentativesController::class, 'store']);
+        Route::put('/api/representatives/{id}', [RepresentativesController::class, 'update']);
+        Route::delete('/api/representatives/{id}', [RepresentativesController::class, 'destroy']);
+
+        // Commission plans
+        Route::post('/api/representatives/{id}/commission-plan', [RepresentativesController::class, 'storeCommissionPlan']);
+
+        // Reports
+        Route::get('/api/representatives/performance-report', [RepresentativesController::class, 'performanceReport']);
+        Route::get('/api/representatives/{id}/detailed-report', [RepresentativesController::class, 'detailedReport']);
 
         // باقي الأقسام
         Route::get('/drivers', function () {

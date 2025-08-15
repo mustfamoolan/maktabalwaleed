@@ -2,199 +2,236 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Representative;
+use App\Models\RepresentativeCommissionPlan;
+use App\Models\RepresentativeTarget;
+use App\Models\Sale;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Carbon\Carbon;
 
 class RepresentativesController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Headquarters/Representatives', [
+        $representatives = Representative::with(['commissionPlans', 'sales'])
+            ->get()
+            ->map(function ($rep) {
+                $currentMonth = Carbon::now()->month;
+                $currentYear = Carbon::now()->year;
+                $stats = $rep->getMonthlyStats($currentMonth, $currentYear);
+
+                return [
+                    'id' => $rep->id,
+                    'name' => $rep->name,
+                    'phone' => $rep->phone,
+                    'status' => $rep->status,
+                    'monthly_target' => $rep->monthly_target,
+                    'current_sales' => $stats['total_sales'],
+                    'achievement_percentage' => $rep->monthly_target > 0 ?
+                        round(($stats['total_sales'] / $rep->monthly_target) * 100, 2) : 0,
+                    'commission_earned' => $stats['commission_earned'],
+                    'total_debt' => $stats['total_debt'],
+                    'cartons_sold' => $stats['total_cartons'],
+                ];
+            });
+
+        return Inertia::render('Headquarters/RepresentativesSimple', [
+            'representatives' => $representatives,
             'pageTitle' => 'إدارة المندوبين'
         ]);
     }
 
     public function show($id)
     {
+        $representative = Representative::with([
+            'commissionPlans',
+            'targets',
+            'sales.product',
+            'sales.supplier'
+        ])->findOrFail($id);
+
+        $currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
+        $stats = $representative->getMonthlyStats($currentMonth, $currentYear);
+
         return Inertia::render('Headquarters/RepresentativeDetails', [
-            'representativeId' => $id,
+            'representative' => [
+                'id' => $representative->id,
+                'name' => $representative->name,
+                'phone' => $representative->phone,
+                'identity_number' => $representative->identity_number,
+                'address' => $representative->address,
+                'status' => $representative->status,
+                'areas' => $representative->areas,
+                'product_categories' => $representative->product_categories,
+                'monthly_target' => $representative->monthly_target,
+                'hire_date' => $representative->hire_date->format('Y-m-d'),
+                'notes' => $representative->notes,
+                'commission_plan' => $representative->activeCommissionPlan(),
+                'monthly_stats' => $stats,
+            ],
             'pageTitle' => 'تفاصيل المندوب'
         ]);
     }
 
-    // API endpoints for representatives management
     public function store(Request $request)
     {
-        // Add new representative
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'area' => 'required|string|max:255',
-            'base_salary' => 'required|numeric|min:0',
-            'commission_plan' => 'required|in:targets,boxes,profit'
+            'phone' => 'required|string|unique:representatives',
+            'identity_number' => 'required|string|unique:representatives',
+            'address' => 'required|string',
+            'areas' => 'nullable|array',
+            'product_categories' => 'nullable|array',
+            'monthly_target' => 'nullable|numeric|min:0',
+            'hire_date' => 'required|date',
+            'notes' => 'nullable|string',
         ]);
 
-        // Add representative logic here
+        $representative = Representative::create($validated);
 
-        return response()->json(['message' => 'تم إضافة المندوب بنجاح']);
+        return response()->json([
+            'success' => true,
+            'message' => 'تم إضافة المندوب بنجاح',
+            'representative' => $representative
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        // Update representative
+        $representative = Representative::findOrFail($id);
+
         $validated = $request->validate([
-            'name' => 'string|max:255',
-            'phone' => 'string|max:20',
-            'email' => 'email|max:255',
-            'area' => 'string|max:255',
-            'base_salary' => 'numeric|min:0',
-            'commission_plan' => 'in:targets,boxes,profit',
-            'is_active' => 'boolean'
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|unique:representatives,phone,' . $id,
+            'identity_number' => 'required|string|unique:representatives,identity_number,' . $id,
+            'address' => 'required|string',
+            'status' => 'required|in:active,inactive,suspended',
+            'areas' => 'nullable|array',
+            'product_categories' => 'nullable|array',
+            'monthly_target' => 'nullable|numeric|min:0',
+            'notes' => 'nullable|string',
         ]);
 
-        // Update representative logic here
+        $representative->update($validated);
 
-        return response()->json(['message' => 'تم تحديث بيانات المندوب بنجاح']);
+        return response()->json([
+            'success' => true,
+            'message' => 'تم تحديث بيانات المندوب بنجاح'
+        ]);
     }
 
     public function destroy($id)
     {
-        // Delete representative
-
-        return response()->json(['message' => 'تم حذف المندوب بنجاح']);
-    }
-
-    // Commission calculation methods
-    public function calculateTargetsCommission($representativeId, $month = null)
-    {
-        // Calculate commission based on targets system
-        // This includes product-specific targets and supplier targets
+        $representative = Representative::findOrFail($id);
+        $representative->delete();
 
         return response()->json([
-            'commission_amount' => 0,
-            'target_percentage' => 0,
-            'details' => []
+            'success' => true,
+            'message' => 'تم حذف المندوب بنجاح'
         ]);
     }
 
-    public function calculateBoxesCommission($representativeId, $month = null)
+    // إدارة خطط العمولة
+    public function storeCommissionPlan(Request $request, $representativeId)
     {
-        // Calculate commission based on boxes sold
-        // Fixed amount per box
-
-        return response()->json([
-            'commission_amount' => 0,
-            'boxes_sold' => 0,
-            'price_per_box' => 300
-        ]);
-    }
-
-    public function calculateProfitCommission($representativeId, $month = null)
-    {
-        // Calculate commission based on profit margin
-        // Percentage of the profit generated
-
-        return response()->json([
-            'commission_amount' => 0,
-            'profit_percentage' => 20,
-            'total_profit' => 0
-        ]);
-    }
-
-    public function getPerformanceReport($representativeId, Request $request)
-    {
-        $month = $request->get('month', date('Y-m'));
-
-        // Get comprehensive performance report for representative
-
-        return response()->json([
-            'sales_amount' => 0,
-            'returned_goods' => 0,
-            'total_boxes' => 0,
-            'cash_collected' => 0,
-            'invoices_count' => 0,
-            'clients_debt' => 0,
-            'profit' => 0,
-            'efficiency_rate' => 0,
-            'targets' => [],
-            'supplier_breakdown' => []
-        ]);
-    }
-
-    public function setTargets(Request $request, $representativeId)
-    {
-        // Set targets for representative
         $validated = $request->validate([
-            'targets' => 'required|array',
-            'targets.*.type' => 'required|in:product,supplier,category',
-            'targets.*.target_id' => 'required',
-            'targets.*.amount' => 'required|numeric|min:0',
-            'targets.*.period' => 'required|in:monthly,quarterly,yearly'
-        ]);
-
-        // Set targets logic here
-
-        return response()->json(['message' => 'تم تحديد الأهداف بنجاح']);
-    }
-
-    public function getTargetsProgress($representativeId, Request $request)
-    {
-        $month = $request->get('month', date('Y-m'));
-
-        // Get targets progress for representative
-
-        return response()->json([
-            'food_products' => [
-                'target' => 1500,
-                'achieved' => 1355,
-                'percentage' => 90.3,
-                'remaining' => 145
-            ],
-            'cleaning_products' => [
-                'target' => 1200,
-                'achieved' => 980,
-                'percentage' => 81.7,
-                'remaining' => 220
-            ],
-            'suppliers' => []
-        ]);
-    }
-
-    public function getCommissionSettings()
-    {
-        // Get global commission settings
-
-        return response()->json([
-            'minimum_performance_rate' => 80, // 80% to get full salary
-            'commission_types' => [
-                'targets' => [
-                    'enabled' => true,
-                    'bonus_rate' => 0.1, // 10% bonus for over-achievement
-                    'penalty_rate' => 0.15 // 15% penalty for under-performance
-                ],
-                'boxes' => [
-                    'enabled' => true,
-                    'price_per_box' => 300
-                ],
-                'profit' => [
-                    'enabled' => true,
-                    'profit_share_percentage' => 20
-                ]
-            ]
-        ]);
-    }
-
-    public function updateCommissionSettings(Request $request)
-    {
-        // Update global commission settings
-        $validated = $request->validate([
+            'plan_type' => 'required|in:target_based,box_based,profit_based',
+            'fixed_salary' => 'required|numeric|min:0',
+            'target_settings' => 'nullable|array',
+            'box_target' => 'nullable|integer|min:0',
+            'box_commission' => 'nullable|numeric|min:0',
+            'profit_percentage' => 'nullable|numeric|min:0|max:100',
             'minimum_performance_rate' => 'required|numeric|min:0|max:100',
-            'commission_types' => 'required|array'
+            'notes' => 'nullable|string',
         ]);
 
-        // Update settings logic here
+        $validated['representative_id'] = $representativeId;
+        $validated['is_active'] = true;
 
-        return response()->json(['message' => 'تم تحديث إعدادات الحوافز بنجاح']);
+        // إلغاء تفعيل الخطط الأخرى
+        RepresentativeCommissionPlan::where('representative_id', $representativeId)
+            ->update(['is_active' => false]);
+
+        $plan = RepresentativeCommissionPlan::create($validated);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'تم إضافة خطة العمولة بنجاح',
+            'plan' => $plan
+        ]);
+    }
+
+    // تقارير الأداء
+    public function performanceReport(Request $request)
+    {
+        $month = $request->get('month', Carbon::now()->month);
+        $year = $request->get('year', Carbon::now()->year);
+
+        $representatives = Representative::with(['sales', 'commissionPlans'])
+            ->get()
+            ->map(function ($rep) use ($month, $year) {
+                $stats = $rep->getMonthlyStats($month, $year);
+                $salesBySupplier = $rep->sales()
+                    ->with('supplier')
+                    ->whereMonth('sale_date', $month)
+                    ->whereYear('sale_date', $year)
+                    ->get()
+                    ->groupBy('supplier_id')
+                    ->map(function ($sales) {
+                        return [
+                            'supplier_name' => $sales->first()->supplier->name,
+                            'total_amount' => $sales->sum('total_amount'),
+                            'total_cartons' => $sales->sum('cartons_sold'),
+                            'total_profit' => $sales->sum('profit_amount'),
+                        ];
+                    });
+
+                return [
+                    'representative' => [
+                        'id' => $rep->id,
+                        'name' => $rep->name,
+                        'phone' => $rep->phone,
+                        'status' => $rep->status,
+                    ],
+                    'stats' => $stats,
+                    'sales_by_supplier' => $salesBySupplier,
+                    'target_achievement' => $rep->monthly_target > 0 ?
+                        round(($stats['total_sales'] / $rep->monthly_target) * 100, 2) : 0,
+                ];
+            });
+
+        return response()->json($representatives);
+    }
+
+    // تقرير مفصل لمندوب واحد
+    public function detailedReport($id, Request $request)
+    {
+        $representative = Representative::findOrFail($id);
+        $month = $request->get('month', Carbon::now()->month);
+        $year = $request->get('year', Carbon::now()->year);
+
+        $sales = $representative->sales()
+            ->with(['product', 'supplier'])
+            ->whereMonth('sale_date', $month)
+            ->whereYear('sale_date', $year)
+            ->get();
+
+        $stats = $representative->getMonthlyStats($month, $year);
+
+        // تحليل بيانات المبيعات
+        $salesByCategory = $sales->groupBy('product.category');
+        $salesBySupplier = $sales->groupBy('supplier_id');
+
+        return response()->json([
+            'representative' => $representative,
+            'stats' => $stats,
+            'sales' => $sales,
+            'sales_by_category' => $salesByCategory,
+            'sales_by_supplier' => $salesBySupplier,
+            'period' => ['month' => $month, 'year' => $year]
+        ]);
     }
 }
