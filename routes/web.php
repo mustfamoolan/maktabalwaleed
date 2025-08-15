@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\RepresentativesController;
 
 // الصفحة الرئيسية - عرض جميع الأقسام
 Route::get('/', function () {
@@ -30,6 +32,38 @@ Route::prefix('headquarters')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Headquarters/Dashboard');
     })->name('headquarters.dashboard');
+
+    // نقطة البيع
+    Route::get('/pos', function () {
+        return Inertia::render('Headquarters/POS');
+    })->name('headquarters.pos');
+
+    // المخزن
+    Route::get('/warehouse', function () {
+        return Inertia::render('Headquarters/Warehouse');
+    })->name('headquarters.warehouse');
+
+    // الموردين
+    Route::get('/suppliers', [SuppliersController::class, 'index'])->name('headquarters.suppliers');
+
+    // تفاصيل مورد معين
+    Route::get('/suppliers/{id}', [SuppliersController::class, 'show'])->name('headquarters.supplier.details');
+
+    // المندوبين
+    Route::get('/representatives', [RepresentativesController::class, 'index'])->name('headquarters.representatives');
+
+    // تفاصيل مندوب معين
+    Route::get('/representatives/{id}', [RepresentativesController::class, 'show'])->name('headquarters.representative.details');
+
+    // السائقين
+    Route::get('/drivers', function () {
+        return Inertia::render('Headquarters/Drivers');
+    })->name('headquarters.drivers');
+
+    // المجهزين
+    Route::get('/preparers', function () {
+        return Inertia::render('Headquarters/Preparers');
+    })->name('headquarters.preparers');
 });
 
 // ==================== المندوبين ====================

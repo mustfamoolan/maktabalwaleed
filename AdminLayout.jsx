@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Head, Link, usePage, router } from '@inertiajs/react';
 
-export default function HeadquartersLayout({ children, title = 'المقر الرئيسي' }) {
+export default function AdminLayout({ children, title = 'لوحة تحكم الأدمن' }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [currentTime, setCurrentTime] = useState(new Date());
@@ -38,56 +38,50 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
 
     const navigation = [
         {
-            name: 'لوحة التحكم',
-            href: '/headquarters/dashboard',
+            name: 'الرئيسية',
+            href: '/admin/dashboard',
             icon: 'M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z',
-            description: 'نظرة عامة على العمليات'
+            description: 'لوحة المراقبة الرئيسية'
         },
         {
-            name: 'نقطة البيع',
-            href: '/headquarters/pos',
+            name: 'الرصيد الافتتاحي',
+            href: '/admin/opening-balance',
             icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-            description: 'نظام إدارة المبيعات'
+            description: 'إدارة الأرصدة الافتتاحية'
         },
         {
-            name: 'المخزن',
-            href: '/headquarters/warehouse',
-            icon: 'M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z',
-            description: 'إدارة المخزون والمنتجات'
-        },
-        {
-            name: 'الموردين',
-            href: '/headquarters/suppliers',
-            icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-            description: 'إدارة شبكة الموردين'
-        },
-        {
-            name: 'المندوبين',
-            href: '/headquarters/representatives',
+            name: 'الموظفين',
+            href: '/admin/employees',
             icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
-            description: 'إدارة فريق المندوبين'
+            description: 'إدارة فريق العمل'
         },
         {
-            name: 'السائقين',
-            href: '/headquarters/drivers',
-            icon: 'M8 17l4 4 4-4m-4-5v9m-8.5-8.5l3 3L12 6l4.5 4.5 3-3M3 12h1m0 0h1m0 0h1M21 12h-1m0 0h-1m0 0h-1',
-            description: 'إدارة فريق السائقين'
+            name: 'العمليات',
+            href: '/admin/operations',
+            icon: 'M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6',
+            description: 'إدارة العمليات المالية'
         },
         {
-            name: 'المجهزين',
-            href: '/headquarters/preparers',
-            icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
-            description: 'إدارة فريق التجهيز'
+            name: 'العملاء',
+            href: '/admin/customers',
+            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            description: 'قاعدة بيانات العملاء'
+        },
+        {
+            name: 'سجل الحركات العام',
+            href: '/admin/transaction-log',
+            icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+            description: 'سجل شامل للمعاملات'
         },
         {
             name: 'التقارير',
-            href: '/headquarters/reports',
+            href: '/admin/reports',
             icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
             description: 'تقارير الأداء والإحصائيات'
         },
         {
             name: 'الإعدادات',
-            href: '/headquarters/settings',
+            href: '/admin/settings',
             icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
             description: 'إعدادات النظام'
         }
@@ -124,8 +118,8 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col" dir="rtl">
-            <Head title={`${title} - ${user?.name || 'مكتبة الوليد'}`} />
+        <div className="min-h-screen bg-gray-50 flex flex-col">
+            <Head title={`${title} - ${user?.name || 'DubaiExchange'}`} />
 
             {/* Header */}
             <header className="bg-white border-b border-gray-200 shadow-sm backdrop-blur-md bg-opacity-95 sticky top-0 z-50">
@@ -148,12 +142,12 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                             <div className="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
                                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-sm">
                                     <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                     </svg>
                                 </div>
                                 <div className="hidden xs:block sm:block">
                                     <h1 className="text-xs sm:text-sm font-semibold text-gray-900">
-                                        مكتبة الوليد - {user?.name || 'المقر الرئيسي'}
+                                        DubaiExchange - {user?.name || 'إدارة النظام'}
                                     </h1>
                                     <p className="text-xs text-gray-500 hidden sm:block">{getCurrentPageInfo().name}</p>
                                 </div>
@@ -199,10 +193,10 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                                         {user?.name || 'مستخدم النظام'}
                                     </p>
                                     <p className="text-xs text-gray-500">
-                                        مدير المقر الرئيسي
+                                        {user?.type === 'admin' ? 'مدير عام' : 'موظف'}
                                     </p>
                                 </div>
-                                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-semibold">
+                                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-semibold">
                                     {user?.name ? user.name.charAt(0) : 'م'}
                                 </div>
                             </div>
@@ -242,7 +236,7 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                 <aside className={`
                     ${isMobile ? 'fixed' : 'relative'}
                     ${isMobile ? (sidebarOpen ? 'translate-x-0' : '-translate-x-full') : 'translate-x-0'}
-                    z-40 w-full sm:w-80 md:w-72 lg:w-64 bg-white border-r-2 border-gray-100 shadow-2xl lg:shadow-none transition-transform duration-300 ease-in-out
+                    z-40 w-full sm:w-80 md:w-72 lg:w-64 bg-white border-r border-gray-200 shadow-2xl lg:shadow-none transition-transform duration-300 ease-in-out
                 `}
                 style={{ height: isMobile ? '100vh' : 'calc(100vh - 56px)' }}>
                     <div className="flex flex-col h-full bg-white">
@@ -252,11 +246,11 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                                 <div className="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
                                     <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                                         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <h2 className="text-sm sm:text-sm font-semibold text-gray-900">المقر الرئيسي</h2>
+                                        <h2 className="text-sm sm:text-sm font-semibold text-gray-900">لوحة التحكم</h2>
                                         <p className="text-xs text-gray-500">إدارة شاملة</p>
                                     </div>
                                 </div>
@@ -333,7 +327,7 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                                         </svg>
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs font-medium text-blue-900 truncate">مكتبة الوليد</p>
+                                        <p className="text-xs font-medium text-blue-900 truncate">الإصدار المتقدم</p>
                                         <p className="text-xs text-blue-600 truncate">جميع الميزات نشطة</p>
                                     </div>
                                 </div>
@@ -343,12 +337,36 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 overflow-hidden bg-gray-50">
+                <main className="flex-1 overflow-hidden">
                     <div className="h-full overflow-y-auto">
-                        <div className="p-0">
+                        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+                            {/* Page Header */}
+                            <div className="mb-4 md:mb-6">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center space-x-3 space-x-reverse">
+                                        <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                                            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={getCurrentPageInfo().icon} />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h1 className="text-lg md:text-xl font-bold text-gray-900">{getCurrentPageInfo().name}</h1>
+                                            <p className="text-xs md:text-sm text-gray-500 hidden sm:block">{getCurrentPageInfo().description}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Mobile Search */}
+                                    <button className="md:hidden p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
                             {/* Page Content */}
-                            <div className="bg-white min-h-[calc(100vh-56px)]">
-                                <div className="p-0">
+                            <div className="bg-white rounded-lg md:rounded-xl shadow-sm border border-gray-200 min-h-[calc(100vh-180px)] md:min-h-[calc(100vh-200px)]">
+                                <div className="p-4 sm:p-6">
                                     {children}
                                 </div>
                             </div>

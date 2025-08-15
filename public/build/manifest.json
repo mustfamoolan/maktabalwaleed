@@ -1,13 +1,27 @@
 {
-  "_GuestLayout-DRxXvYMD.js": {
-    "file": "assets/GuestLayout-DRxXvYMD.js",
+  "_GuestLayout-DAdAeUIJ.js": {
+    "file": "assets/GuestLayout-DAdAeUIJ.js",
     "name": "GuestLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
+  "_HeadquartersLayout-D6sVVzLL.js": {
+    "file": "assets/HeadquartersLayout-D6sVVzLL.js",
+    "name": "HeadquartersLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-DZcadscr.js": {
+    "file": "assets/index-DZcadscr.js",
+    "name": "index",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
   "resources/js/Pages/Customers/Index.jsx": {
-    "file": "assets/Index-CSYdtjKv.js",
+    "file": "assets/Index-BEbnvxO6.js",
     "name": "Index",
     "src": "resources/js/Pages/Customers/Index.jsx",
     "isDynamicEntry": true,
@@ -16,70 +30,152 @@
     ]
   },
   "resources/js/Pages/Drivers/Login.jsx": {
-    "file": "assets/Login-AlcrKmmi.js",
+    "file": "assets/Login--3xJMJQo.js",
     "name": "Login",
     "src": "resources/js/Pages/Drivers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DRxXvYMD.js"
+      "_GuestLayout-DAdAeUIJ.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/Dashboard.jsx": {
+    "file": "assets/Dashboard-Dil5EAfJ.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Headquarters/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js"
     ]
   },
   "resources/js/Pages/Headquarters/Login.jsx": {
-    "file": "assets/Login-DHuTcBsw.js",
+    "file": "assets/Login-Ct5ppVBx.js",
     "name": "Login",
     "src": "resources/js/Pages/Headquarters/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DRxXvYMD.js"
+      "_GuestLayout-DAdAeUIJ.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/POS.jsx": {
+    "file": "assets/POS-C9FrKXNK.js",
+    "name": "POS",
+    "src": "resources/js/Pages/Headquarters/POS.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/RepresentativeDetails.jsx": {
+    "file": "assets/RepresentativeDetails-9j8EweF2.js",
+    "name": "RepresentativeDetails",
+    "src": "resources/js/Pages/Headquarters/RepresentativeDetails.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js",
+      "_index-DZcadscr.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/Representatives.jsx": {
+    "file": "assets/Representatives-BZ-7ch5p.js",
+    "name": "Representatives",
+    "src": "resources/js/Pages/Headquarters/Representatives.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js",
+      "_index-DZcadscr.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/SupplierDetails.jsx": {
+    "file": "assets/SupplierDetails-CYbPLfTL.js",
+    "name": "SupplierDetails",
+    "src": "resources/js/Pages/Headquarters/SupplierDetails.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js",
+      "_index-DZcadscr.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/Suppliers.jsx": {
+    "file": "assets/Suppliers-DC0H8HBg.js",
+    "name": "Suppliers",
+    "src": "resources/js/Pages/Headquarters/Suppliers.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js",
+      "_index-DZcadscr.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/Warehouse.jsx": {
+    "file": "assets/Warehouse-BeNQVNnB.js",
+    "name": "Warehouse",
+    "src": "resources/js/Pages/Headquarters/Warehouse.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_HeadquartersLayout-D6sVVzLL.js",
+      "_index-DZcadscr.js"
     ]
   },
   "resources/js/Pages/Index.jsx": {
-    "file": "assets/Index-D7HzdAVc.js",
+    "file": "assets/Index-ikgaTceK.js",
     "name": "Index",
     "src": "resources/js/Pages/Index.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DRxXvYMD.js"
+      "_GuestLayout-DAdAeUIJ.js"
     ]
   },
   "resources/js/Pages/Preparers/Login.jsx": {
-    "file": "assets/Login-DeE6deI1.js",
+    "file": "assets/Login-DTd6Du5j.js",
     "name": "Login",
     "src": "resources/js/Pages/Preparers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DRxXvYMD.js"
+      "_GuestLayout-DAdAeUIJ.js"
     ]
   },
   "resources/js/Pages/Representatives/Login.jsx": {
-    "file": "assets/Login-D-OGdquT.js",
+    "file": "assets/Login-D3rGaOkZ.js",
     "name": "Login",
     "src": "resources/js/Pages/Representatives/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DRxXvYMD.js"
+      "_GuestLayout-DAdAeUIJ.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-DGJ-tvYG.js",
+    "file": "assets/app-lUK7UnNI.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
     "dynamicImports": [
       "resources/js/Pages/Customers/Index.jsx",
       "resources/js/Pages/Drivers/Login.jsx",
+      "resources/js/Pages/Headquarters/Dashboard.jsx",
       "resources/js/Pages/Headquarters/Login.jsx",
+      "resources/js/Pages/Headquarters/POS.jsx",
+      "resources/js/Pages/Headquarters/RepresentativeDetails.jsx",
+      "resources/js/Pages/Headquarters/Representatives.jsx",
+      "resources/js/Pages/Headquarters/SupplierDetails.jsx",
+      "resources/js/Pages/Headquarters/Suppliers.jsx",
+      "resources/js/Pages/Headquarters/Warehouse.jsx",
       "resources/js/Pages/Index.jsx",
       "resources/js/Pages/Preparers/Login.jsx",
       "resources/js/Pages/Representatives/Login.jsx"
     ],
     "css": [
-      "assets/app-DPVcA-o1.css"
+      "assets/app-BlHG0bGr.css"
     ]
   }
 }
