@@ -1,4 +1,4 @@
-import{r as nt,R as Es}from"./app-lUK7UnNI.js";/*!
+import{r as nt,R as Es}from"./app-y4GiZYjz.js";/*!
  * @kurkle/color v0.3.4
  * https://github.com/kurkle/color#readme
  * (c) 2024 Jukka Kurkela

@@ -160,8 +160,8 @@ export default function HeadquartersLogin() {
                                 بيانات تجريبية - الإدارة
                             </h3>
                             <div className="text-xs text-blue-600 space-y-1">
-                                <div><strong>الهاتف:</strong> 01234567890</div>
-                                <div><strong>كلمة المرور:</strong> admin123</div>
+                                <div><strong>الهاتف:</strong> 07742209251</div>
+                                <div><strong>كلمة المرور:</strong> 12345678</div>
                             </div>
                         </div>
                     </div>

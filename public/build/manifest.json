@@ -1,27 +1,27 @@
 {
-  "_GuestLayout-DAdAeUIJ.js": {
-    "file": "assets/GuestLayout-DAdAeUIJ.js",
+  "_GuestLayout-D26Ksg8q.js": {
+    "file": "assets/GuestLayout-D26Ksg8q.js",
     "name": "GuestLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_HeadquartersLayout-D6sVVzLL.js": {
-    "file": "assets/HeadquartersLayout-D6sVVzLL.js",
+  "_HeadquartersLayout-2CkVJdbo.js": {
+    "file": "assets/HeadquartersLayout-2CkVJdbo.js",
     "name": "HeadquartersLayout",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_index-DZcadscr.js": {
-    "file": "assets/index-DZcadscr.js",
+  "_index-1MfScx3F.js": {
+    "file": "assets/index-1MfScx3F.js",
     "name": "index",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "resources/js/Pages/Customers/Index.jsx": {
-    "file": "assets/Index-BEbnvxO6.js",
+    "file": "assets/Index-DIB_tP2N.js",
     "name": "Index",
     "src": "resources/js/Pages/Customers/Index.jsx",
     "isDynamicEntry": true,
@@ -30,132 +30,132 @@
     ]
   },
   "resources/js/Pages/Drivers/Login.jsx": {
-    "file": "assets/Login--3xJMJQo.js",
+    "file": "assets/Login-MVu3zbDj.js",
     "name": "Login",
     "src": "resources/js/Pages/Drivers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DAdAeUIJ.js"
+      "_GuestLayout-D26Ksg8q.js"
     ]
   },
   "resources/js/Pages/Headquarters/Dashboard.jsx": {
-    "file": "assets/Dashboard-Dil5EAfJ.js",
+    "file": "assets/Dashboard-BtaGrTly.js",
     "name": "Dashboard",
     "src": "resources/js/Pages/Headquarters/Dashboard.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js"
+      "_HeadquartersLayout-2CkVJdbo.js"
     ]
   },
   "resources/js/Pages/Headquarters/Login.jsx": {
-    "file": "assets/Login-Ct5ppVBx.js",
+    "file": "assets/Login-CGqRNcWF.js",
     "name": "Login",
     "src": "resources/js/Pages/Headquarters/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DAdAeUIJ.js"
+      "_GuestLayout-D26Ksg8q.js"
     ]
   },
   "resources/js/Pages/Headquarters/POS.jsx": {
-    "file": "assets/POS-C9FrKXNK.js",
+    "file": "assets/POS-Dsa4cn_n.js",
     "name": "POS",
     "src": "resources/js/Pages/Headquarters/POS.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js"
+      "_HeadquartersLayout-2CkVJdbo.js"
     ]
   },
   "resources/js/Pages/Headquarters/RepresentativeDetails.jsx": {
-    "file": "assets/RepresentativeDetails-9j8EweF2.js",
+    "file": "assets/RepresentativeDetails-BJoQoye3.js",
     "name": "RepresentativeDetails",
     "src": "resources/js/Pages/Headquarters/RepresentativeDetails.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js",
-      "_index-DZcadscr.js"
+      "_HeadquartersLayout-2CkVJdbo.js",
+      "_index-1MfScx3F.js"
     ]
   },
   "resources/js/Pages/Headquarters/Representatives.jsx": {
-    "file": "assets/Representatives-BZ-7ch5p.js",
+    "file": "assets/Representatives-B3vm20TZ.js",
     "name": "Representatives",
     "src": "resources/js/Pages/Headquarters/Representatives.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js",
-      "_index-DZcadscr.js"
+      "_HeadquartersLayout-2CkVJdbo.js",
+      "_index-1MfScx3F.js"
     ]
   },
   "resources/js/Pages/Headquarters/SupplierDetails.jsx": {
-    "file": "assets/SupplierDetails-CYbPLfTL.js",
+    "file": "assets/SupplierDetails-BZxZPSdO.js",
     "name": "SupplierDetails",
     "src": "resources/js/Pages/Headquarters/SupplierDetails.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js",
-      "_index-DZcadscr.js"
+      "_HeadquartersLayout-2CkVJdbo.js",
+      "_index-1MfScx3F.js"
     ]
   },
   "resources/js/Pages/Headquarters/Suppliers.jsx": {
-    "file": "assets/Suppliers-DC0H8HBg.js",
+    "file": "assets/Suppliers-B6Mftr4t.js",
     "name": "Suppliers",
     "src": "resources/js/Pages/Headquarters/Suppliers.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js",
-      "_index-DZcadscr.js"
+      "_HeadquartersLayout-2CkVJdbo.js",
+      "_index-1MfScx3F.js"
     ]
   },
   "resources/js/Pages/Headquarters/Warehouse.jsx": {
-    "file": "assets/Warehouse-BeNQVNnB.js",
+    "file": "assets/Warehouse-COl9vwVE.js",
     "name": "Warehouse",
     "src": "resources/js/Pages/Headquarters/Warehouse.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_HeadquartersLayout-D6sVVzLL.js",
-      "_index-DZcadscr.js"
+      "_HeadquartersLayout-2CkVJdbo.js",
+      "_index-1MfScx3F.js"
     ]
   },
   "resources/js/Pages/Index.jsx": {
-    "file": "assets/Index-ikgaTceK.js",
+    "file": "assets/Index-BpYiNDF7.js",
     "name": "Index",
     "src": "resources/js/Pages/Index.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DAdAeUIJ.js"
+      "_GuestLayout-D26Ksg8q.js"
     ]
   },
   "resources/js/Pages/Preparers/Login.jsx": {
-    "file": "assets/Login-DTd6Du5j.js",
+    "file": "assets/Login-4wCSPUsQ.js",
     "name": "Login",
     "src": "resources/js/Pages/Preparers/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DAdAeUIJ.js"
+      "_GuestLayout-D26Ksg8q.js"
     ]
   },
   "resources/js/Pages/Representatives/Login.jsx": {
-    "file": "assets/Login-D3rGaOkZ.js",
+    "file": "assets/Login-K-ojiMZU.js",
     "name": "Login",
     "src": "resources/js/Pages/Representatives/Login.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_GuestLayout-DAdAeUIJ.js"
+      "_GuestLayout-D26Ksg8q.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-lUK7UnNI.js",
+    "file": "assets/app-y4GiZYjz.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -175,7 +175,7 @@
       "resources/js/Pages/Representatives/Login.jsx"
     ],
     "css": [
-      "assets/app-BlHG0bGr.css"
+      "assets/app-BEDDdLNe.css"
     ]
   }
 }

@@ -7,8 +7,8 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
     const [currentTime, setCurrentTime] = useState(new Date());
     const { url, props } = usePage();
 
-    // الحصول على بيانات المستخدم من session
-    const user = props.auth?.sessionUser || null;
+    // الحصول على بيانات المستخدم من session أو auth
+    const user = props.auth?.headquarters_user;
 
     useEffect(() => {
         const checkMobile = () => {
@@ -211,7 +211,7 @@ export default function HeadquartersLayout({ children, title = 'المقر ال�
                             <button
                                 onClick={() => {
                                     if (confirm('هل تريد تسجيل الخروج؟')) {
-                                        router.post('/logout');
+                                        router.post('/headquarters/logout');
                                     }
                                 }}
                                 className="p-1.5 sm:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-20"

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\RepresentativesController;
+use App\Http\Controllers\Auth\HeadquartersAuthController;
 
 // الصفحة الرئيسية - عرض جميع الأقسام
 Route::get('/', function () {
@@ -17,53 +18,52 @@ Route::get('/home', function () {
 
 // ==================== المقر الرئيسي ====================
 Route::prefix('headquarters')->group(function () {
-    // صفحة تسجيل الدخول
-    Route::get('/login', function () {
-        return Inertia::render('Headquarters/Login');
-    })->name('headquarters.login');
+    // صفحات تسجيل الدخول (غير محمية)
+    Route::get('/login', [HeadquartersAuthController::class, 'showLoginForm'])
+        ->name('headquarters.login')
+        ->middleware('guest:headquarters');
 
-    // معالجة تسجيل الدخول
-    Route::post('/login', function () {
-        // سيتم إضافة المنطق لاحقاً
-        return redirect('/headquarters/dashboard');
+    Route::post('/login', [HeadquartersAuthController::class, 'login'])
+        ->middleware('guest:headquarters');
+
+    // الصفحات المحمية
+    Route::middleware('auth:headquarters')->group(function () {
+        // تسجيل الخروج
+        Route::post('/logout', [HeadquartersAuthController::class, 'logout'])
+            ->name('headquarters.logout');
+
+        // لوحة التحكم
+        Route::get('/dashboard', function () {
+            return Inertia::render('Headquarters/Dashboard');
+        })->name('headquarters.dashboard');
+
+        // نقطة البيع
+        Route::get('/pos', function () {
+            return Inertia::render('Headquarters/POS');
+        })->name('headquarters.pos');
+
+        // المخزن
+        Route::get('/warehouse', function () {
+            return Inertia::render('Headquarters/Warehouse');
+        })->name('headquarters.warehouse');
+
+        // الموردين
+        Route::get('/suppliers', [SuppliersController::class, 'index'])->name('headquarters.suppliers');
+        Route::get('/suppliers/{id}', [SuppliersController::class, 'show'])->name('headquarters.supplier.details');
+
+        // المندوبين
+        Route::get('/representatives', [RepresentativesController::class, 'index'])->name('headquarters.representatives');
+        Route::get('/representatives/{id}', [RepresentativesController::class, 'show'])->name('headquarters.representative.details');
+
+        // باقي الأقسام
+        Route::get('/drivers', function () {
+            return Inertia::render('Headquarters/Drivers');
+        })->name('headquarters.drivers');
+
+        Route::get('/preparers', function () {
+            return Inertia::render('Headquarters/Preparers');
+        })->name('headquarters.preparers');
     });
-
-    // لوحة التحكم (محمية)
-    Route::get('/dashboard', function () {
-        return Inertia::render('Headquarters/Dashboard');
-    })->name('headquarters.dashboard');
-
-    // نقطة البيع
-    Route::get('/pos', function () {
-        return Inertia::render('Headquarters/POS');
-    })->name('headquarters.pos');
-
-    // المخزن
-    Route::get('/warehouse', function () {
-        return Inertia::render('Headquarters/Warehouse');
-    })->name('headquarters.warehouse');
-
-    // الموردين
-    Route::get('/suppliers', [SuppliersController::class, 'index'])->name('headquarters.suppliers');
-
-    // تفاصيل مورد معين
-    Route::get('/suppliers/{id}', [SuppliersController::class, 'show'])->name('headquarters.supplier.details');
-
-    // المندوبين
-    Route::get('/representatives', [RepresentativesController::class, 'index'])->name('headquarters.representatives');
-
-    // تفاصيل مندوب معين
-    Route::get('/representatives/{id}', [RepresentativesController::class, 'show'])->name('headquarters.representative.details');
-
-    // السائقين
-    Route::get('/drivers', function () {
-        return Inertia::render('Headquarters/Drivers');
-    })->name('headquarters.drivers');
-
-    // المجهزين
-    Route::get('/preparers', function () {
-        return Inertia::render('Headquarters/Preparers');
-    })->name('headquarters.preparers');
 });
 
 // ==================== المندوبين ====================

@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // إضافة seeders لقواعد البيانات
+        $this->call([
+            HeadquartersUserSeeder::class,
+        ]);
+
         // User::factory(10)->create();
 
         User::factory()->create([
