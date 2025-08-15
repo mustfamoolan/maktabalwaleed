@@ -1,0 +1,85 @@
+{
+  "_GuestLayout-DRxXvYMD.js": {
+    "file": "assets/GuestLayout-DRxXvYMD.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Customers/Index.jsx": {
+    "file": "assets/Index-CSYdtjKv.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Customers/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Drivers/Login.jsx": {
+    "file": "assets/Login-AlcrKmmi.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Drivers/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-DRxXvYMD.js"
+    ]
+  },
+  "resources/js/Pages/Headquarters/Login.jsx": {
+    "file": "assets/Login-DHuTcBsw.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Headquarters/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-DRxXvYMD.js"
+    ]
+  },
+  "resources/js/Pages/Index.jsx": {
+    "file": "assets/Index-D7HzdAVc.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-DRxXvYMD.js"
+    ]
+  },
+  "resources/js/Pages/Preparers/Login.jsx": {
+    "file": "assets/Login-DeE6deI1.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Preparers/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-DRxXvYMD.js"
+    ]
+  },
+  "resources/js/Pages/Representatives/Login.jsx": {
+    "file": "assets/Login-D-OGdquT.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Representatives/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-DRxXvYMD.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-DGJ-tvYG.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Customers/Index.jsx",
+      "resources/js/Pages/Drivers/Login.jsx",
+      "resources/js/Pages/Headquarters/Login.jsx",
+      "resources/js/Pages/Index.jsx",
+      "resources/js/Pages/Preparers/Login.jsx",
+      "resources/js/Pages/Representatives/Login.jsx"
+    ],
+    "css": [
+      "assets/app-DPVcA-o1.css"
+    ]
+  }
+}
